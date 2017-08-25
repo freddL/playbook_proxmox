@@ -51,7 +51,7 @@ Ce que fait ce playbook :
   debug: msg="PVE à changé de version {{ release.stdout }} à {{ new_release.stdout }}"
   when: release.stdout != new_release.stdout
 </pre>
-<li>Vérification de la préence du paquet needrestart, dans le cas échant l'installer :</li>
+<li>Vérification de la présence du paquet needrestart, dans le cas échéant l'installer :</li>
 <pre>
 - name: Vérification de la présence de needrestart
   apt: name=needrestart state=present
