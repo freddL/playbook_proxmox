@@ -51,15 +51,25 @@ Ce que fait ce playbook :
   debug: msg="PVE à changé de version {{ release.stdout }} à {{ new_release.stdout }}"
   when: release.stdout != new_release.stdout
 </pre>
-<li>Vérification des services à redémarrer via <strong><a href="https://memo-linux.com/debian-checkrestart-verification-des-mises-a-jour-securite-de-bibliotheques/">checkrestart</a></strong> :</li>
+<li>Vérification de la préence du paquet needrestart, dans le cas échant l'installer :</li>
 <pre>
-- name: vérification des services à redémarrer
-  shell: checkrestart | grep ^service | awk '{print $2}'
+- name: Vérification de la présence de needrestart
+  apt: name=needrestart state=present
+ </pre>
+<li>Lister les services à redémarrer :</li>
+<pre>
+- name: Lister les services a rédémarrer
+  shell: needrestart -rl
   register: services
 </pre>
 <li>Affichage des services à redémarrer :</li>
 <pre>
-- name: services à redémarrer
-  debug: msg="{{ services.stdout_lines | count }} services à redémarrer ({{ services.stdout_lines | join (', ') }})"
+- name: Afficher les services à redémarrer
+  debug: msg="{{ services.stdout_lines }}"
+</pre>
+<li>Redémarrerles services :</li>
+<pre>
+- name: Redémarrage des services
+  shell: needrestart -ra
 </pre>
 </ul>
