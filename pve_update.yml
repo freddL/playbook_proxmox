@@ -34,9 +34,15 @@
       debug: msg="PVE à changé de version {{ release.stdout }} à {{ new_release.stdout }}"
       when: release.stdout != new_release.stdout
 
-    - name: vérification des services à redémarrer
-      shell: checkrestart | grep ^service | awk '{print $2}'
+    - name: Vérification de la présence de needrestart
+      apt: name=needrestart state=present
+
+    - name: Lister les services a rédémarrer
+      shell: needrestart -rl
       register: services
 
-    - name: services à redémarrer
-      debug: msg="{{ services.stdout_lines | count }} services à redémarrer ({{ services.stdout_lines | join (', ') }})"
+    - name: Afficher les services à redémarrer
+      debug: msg="{{ services.stdout_lines }}"
+
+    - name: Redémarrage des services
+      shell: needrestart -ra
