@@ -25,9 +25,9 @@ Ce que fait ce playbook :
 <pre>
 - name: version Kernel dispo
   shell: ls -t /boot/vmlinuz-* | sed "s/\/boot\/vmlinuz-//g" | head -n1
-  register: kernel_dispopre&gt;
+  register: kernel_dispo
 </pre>
-<li>Vérification de la version du noyau Linux utilisé par Proxmox :</li>
+ <li>Vérification de la version du noyau Linux utilisé par Proxmox :</li>
 <pre>
 - name: version kernel actuel
   shell: uname -r
