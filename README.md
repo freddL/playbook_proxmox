@@ -67,7 +67,7 @@ Ce que fait ce playbook :
 - name: Afficher les services à redémarrer
   debug: msg="{{ services.stdout_lines }}"
 </pre>
-<li>Redémarrerles services :</li>
+<li>Redémarrer les services :</li>
 <pre>
 - name: Redémarrage des services
   shell: needrestart -ra
