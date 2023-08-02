@@ -14,12 +14,12 @@ Ce que fait ce playbook :
 <li>Message d'activation du mode maintenance du noeud :</li>
 <pre>
 - name: mode maintenance
-- debug: msg="Mode maintenance activé"
+  debug: msg="Mode maintenance activé"
  </pre>
 <li>Activation du mode maintenance du noeud :</li>
  <pre>
 - name: maintenance on
-- shell: ha-manager crm-command node-maintenance enable $(hostname) 
+  shell: ha-manager crm-command node-maintenance enable $(hostname) 
  </pre>
 <li>Mise à jour des dépôts :</li>
 <pre>
@@ -85,11 +85,11 @@ Ce que fait ce playbook :
 <li>Message de désactivation du le mode maintenance :</li>
  <pre>
 - name: mode maintenance
--debug: msg="Mode maintenance dédactivé"
+  debug: msg="Mode maintenance dédactivé"
   </pre>
 <li>Désactivation du le mode maintenance :</li>
   <pre>
 - name: maintenance off
-- shell: ha-manager crm-command node-maintenance disable $(hostname)
+  shell: ha-manager crm-command node-maintenance disable $(hostname)
    </pre>
 </ul>
