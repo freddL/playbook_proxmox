@@ -21,6 +21,13 @@ Ce que fait ce playbook :
 - name: maintenance on
   shell: ha-manager crm-command node-maintenance enable $(hostname) 
  </pre>
+ <li>Tempo de 5 mintes</li>li>
+ <pre>
+  - name: Attendre 5 minutes pour la fin de migration des VMs
+      ansible.builtin.wait_for:
+        timeout: 300
+      delegate_to: localhost
+ </pre>
 <li>Mise à jour des dépôts :</li>
 <pre>
 - name: Mise à jour des dépôts
