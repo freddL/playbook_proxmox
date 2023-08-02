@@ -11,7 +11,7 @@ Ce que fait ce playbook :
 - name: Notification version PVE
   debug: msg="Version de PVE {{ release.stdout }}"
 </pre>
-<li>Activer le mode maintenance du noeud :</li>li>
+<li>Activer le mode maintenance du noeud :</li>
 <pre>
 - name: mode maintenance
 - debug: msg="Mode maintenance activé"
