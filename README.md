@@ -21,7 +21,7 @@ Ce que fait ce playbook :
 - name: maintenance on
   shell: ha-manager crm-command node-maintenance enable $(hostname) 
  </pre>
- <li>Tempo de 5 mintes</li>li>
+ <li>Tempo de 5 minutes</li>
  <pre>
   - name: Attendre 5 minutes pour la fin de migration des VMs
       ansible.builtin.wait_for:
