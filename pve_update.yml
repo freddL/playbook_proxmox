@@ -6,7 +6,13 @@
 
     - name: Notification version PVE
       debug: msg="Version de PVE {{ release.stdout }}"
+    
+    - name: mode maintenance
+    - debug: msg="Mode maintenance activé"
 
+    - name: maintenance on
+    - shell: ha-manager crm-command node-maintenance enable $(hostname)
+    
     - name: Mise à jour des dépôts
       apt: update_cache=yes
 
@@ -46,3 +52,7 @@
 
     - name: Redémarrage des services
       shell: needrestart -ra
+    
+    - name: maintenance off
+    - shell: ha-manager crm-command node-maintenance disable $(hostname)
+    
