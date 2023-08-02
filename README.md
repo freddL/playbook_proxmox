@@ -11,13 +11,16 @@ Ce que fait ce playbook :
 - name: Notification version PVE
   debug: msg="Version de PVE {{ release.stdout }}"
 </pre>
-<li>Activer le mode maintenance du noeud :</li>
+<li>Message d'activation du mode maintenance du noeud :</li>
 <pre>
 - name: mode maintenance
 - debug: msg="Mode maintenance activé"
-
+ </pre>
+<li>Activation du mode maintenance du noeud :</li>
+ <pre>
 - name: maintenance on
 - shell: ha-manager crm-command node-maintenance enable $(hostname) 
+ </pre>
 <li>Mise à jour des dépôts :</li>
 <pre>
 - name: Mise à jour des dépôts
@@ -79,10 +82,14 @@ Ce que fait ce playbook :
 - name: Redémarrage des services
   shell: needrestart -ra
 </pre>
-<li>Désactiver le mode maintenance :</li>
+<li>Message de désactivation du le mode maintenance :</li>
+ <pre>
 - name: mode maintenance
 -debug: msg="Mode maintenance dédactivé"
-
+  </pre>
+<li>Désactivation du le mode maintenance :</li>
+  <pre>
 - name: maintenance off
 - shell: ha-manager crm-command node-maintenance disable $(hostname)
+   </pre>
 </ul>
