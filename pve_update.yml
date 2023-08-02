@@ -12,6 +12,11 @@
 
     - name: maintenance on
     - shell: ha-manager crm-command node-maintenance enable $(hostname)
+
+    - name: Attendre 5 minutes pour la fin de migration des VMs
+      ansible.builtin.wait_for:
+        timeout: 300
+      delegate_to: localhost
     
     - name: Mise à jour des dépôts
       apt: update_cache=yes
