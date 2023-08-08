@@ -8,10 +8,10 @@
       debug: msg="Version de PVE {{ release.stdout }}"
     
     - name: mode maintenance
-    - debug: msg="Mode maintenance activé"
+      debug: msg="Mode maintenance activé"
 
     - name: maintenance on
-    - shell: ha-manager crm-command node-maintenance enable $(hostname)
+      shell: ha-manager crm-command node-maintenance enable $(hostname)
 
     - name: Attendre 5 minutes pour la fin de migration des VMs
       ansible.builtin.wait_for:
