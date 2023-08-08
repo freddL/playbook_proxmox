@@ -57,7 +57,10 @@
 
     - name: Redémarrage des services
       shell: needrestart -ra
+
+    - name: Nettoyage des vieux paquets
+      shell: apt autoremove -y 
     
     - name: maintenance off
-    - shell: ha-manager crm-command node-maintenance disable $(hostname)
+      shell: ha-manager crm-command node-maintenance disable $(hostname)
     
